@@ -17,4 +17,8 @@ public class NewsDAO {
        return jdbcTemplate.query("SELECT * FROM NewTable", BeanPropertyRowMapper.newInstance(newsData.class));
     }
 
+    public  List<newsData> fewNews(int startid, int count){
+        String select = "SELECT * FROM NewTable WHERE id BETWEEN " + Integer.toString(startid) + " AND " + Integer.toString(startid+count);
+        return jdbcTemplate.query(select, BeanPropertyRowMapper.newInstance(newsData.class));
+    }
 }
