@@ -1,8 +1,12 @@
 package PolyEco.springBack.PolyEcoBackend.DAO;
 
+import PolyEco.springBack.PolyEcoBackend.RowMappers.mainNewsDataRowMapper;
 import PolyEco.springBack.PolyEcoBackend.RowMappers.mainNewsMarkupRowMapper;
 import PolyEco.springBack.PolyEcoBackend.model.mainNews;
+import PolyEco.springBack.PolyEcoBackend.model.mainNewsData;
 import PolyEco.springBack.PolyEcoBackend.model.newsData;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,5 +31,10 @@ public class NewsDAO {
     public List<mainNews> getMainNewsMarkup(int id){
         String select = "SELECT * FROM ExtendedNews WHERE id = " + Integer.toString(id);
         return jdbcTemplate.query(select, new mainNewsMarkupRowMapper());
+    }
+    public List<mainNewsData> getMainNewsData(int id) throws JsonProcessingException {
+        String select = "SELECT * FROM DataStorage WHERE id = " + Integer.toString(id);
+        List<mainNewsData> newsData = jdbcTemplate.query(select, new mainNewsDataRowMapper());
+        return newsData;
     }
 }

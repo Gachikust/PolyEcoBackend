@@ -3,7 +3,9 @@ package PolyEco.springBack.PolyEcoBackend.controllers;
 
 import PolyEco.springBack.PolyEcoBackend.DAO.NewsDAO;
 import PolyEco.springBack.PolyEcoBackend.model.mainNews;
+import PolyEco.springBack.PolyEcoBackend.model.mainNewsData;
 import PolyEco.springBack.PolyEcoBackend.model.newsData;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,5 +37,9 @@ public class AndroidDataTest {
     @GetMapping("/android/textmarkup")
     public mainNews getMainNews(@RequestParam(defaultValue = "0") int id){
         return dao.getMainNewsMarkup(id).get(0);
+    }
+    @GetMapping("/android/newsdata")
+    public List<mainNewsData> getMainNewsData(@RequestParam(defaultValue = "0") int id) throws JsonProcessingException {
+        return dao.getMainNewsData(id);
     }
 }

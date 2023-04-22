@@ -1,22 +1,20 @@
 package PolyEco.springBack.PolyEcoBackend.model;
 
-import java.util.List;
-
 public class mainNewsData {
-    private List<String> imgName;
-    private List<byte[]> img;
-    public void setImgName(List<String> imgName) {
+    private String imgName;
+    private byte[] img;
+    public void setImgName(String imgName) {
         this.imgName = imgName;
     }
 
-    public void setImg(List<byte[]> img) {
+    public void setImg(byte[] img) {
         this.img = img;
     }
-    public List<String> getImgName() {
+    public String getImgName() {
         return imgName;
     }
 
-    public List<byte[]> getImg() {
+    public byte[] getImg() {
         return img;
     }
 }
