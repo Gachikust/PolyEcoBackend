@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Bootstrap Rich Text Editor</title>
+</head>
+<body>
+<form method="post" th:object="${News}" enctype="multipart/form-data">
+
+    <label for="content">Content:</label>
+    <textarea type="text" rows="4" id="content" placeholder="Content" class="form-control" th:field="*{mainText}" autocomplete="off" ></textarea>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+<input type="file" name="files" id="addItemBut" multiple >
+<button class="addimg" type="submit" onclick="func();">add</button>
+<img id = "testImg">
+<script>
+function func() {
+let addButton = document.getElementById('addItemBut');
+let imgFile = addButton.files[0];
+//document.getElementById("testImg").setAttribute("src", imgFile);
+var reader  = new FileReader();
+ reader.onload = function(e)  {
+        var image = document.createElement("img");
+        image.src = e.target.result;
+        document.body.appendChild(image);
+     }
+     reader.readAsDataURL(imgFile);
+//alert("213");
+};
+</script>
+</body>
+</html>
